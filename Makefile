@@ -1,16 +1,13 @@
 OCAMLOPT=ocamlopt unix.cmxa graphics.cmxa
 
-MLFILES=ball.ml
-CMXFILES=$(patsubst %.ml,%.cmx,$(MLFILES))
-
-ball : $(CMXFILES)
+ball : ball.cmx
 	$(OCAMLOPT) $^ -o $@
 
-test : ball
-	./ball
+world : world.cmx
+	$(OCAMLOPT) $^ -o $@
 
 %.cmx : %.ml
 	$(OCAMLOPT) -c $<
 
 clean :
-	rm -f *.cmx *.cmi *.o ball *~
+	rm -f *.cmx *.cmi *.o ball world *~
