@@ -30,21 +30,9 @@ module type Transducer = sig
 
 end
 
-
 module World = struct
   let sum p v = { x=p.x + v.dx ; y=p.y + v.dy }
   let collide c min max d = if c < min || c > max then -d else d
-
-  (* boundary size
-
-    (0,0)
-    ..................
-    .                .
-    .                .
-    .                .
-    ..................
-                     (width,height)
-  *)
 
   let update (b : ball) width height : ball =
     (* update via deltas *)
