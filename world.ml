@@ -89,7 +89,6 @@ struct
     let now = Unix.gettimeofday () in
     if now -. last >= tick
     then begin
-      Printf.printf "%d,%d\n%!" b.loc.x b.loc.y;
       G.clear_graph ();
       draw b;
       G.synchronize ();
