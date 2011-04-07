@@ -64,7 +64,6 @@ let init_graphics () =
   Graphics.set_window_title "Bouncy!";
   Graphics.auto_synchronize false
 
-
 module GUI
   (M: sig val width: int
           val height: int
@@ -79,6 +78,7 @@ struct
   let initial = { radius = 5; loc = {x=20; y=20} ; vel = {dx=5; dy=5} }
 
   let draw (b:ball) =
+    G.draw_rect (M.origin.x-b.radius) (M.origin.y-b.radius) (M.width+b.radius) (M.height+b.radius);
     G.fill_circle (M.origin.x + b.loc.x) (M.origin.y + b.loc.y) b.radius
 
   let wake () = ()
